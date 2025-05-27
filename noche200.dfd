@@ -1,0 +1,48 @@
+
+E1: Usuario
+
+PROCESOS:
+P1: Gestión de Venta de Gasolina
+
+ALMACENES DE DATOS:
+D1: Tanques
+D2: Registro de Ventas
+
+FLUJOS DE DATOS:
+E1 → P1: Solicitud de compra (tipo, galones o dinero)
+P1 → D1: Consulta disponibilidad
+D1 → P1: Estado de tanques
+P1 → D2: Registro de venta
+P1 → E1: Resultado de compra (galones vendidos o mensaje de error)
+
+
+-----------------------------------------------
+
+DIAGRAMA DE FLUJO DE DATOS - NIVEL 1
+Versión: 1.1
+
+ENTIDADES EXTERNAS:
+E1: Usuario
+
+PROCESOS:
+P1.1: Captura de solicitud
+P1.2: Validación de disponibilidad
+P1.3: Procesamiento de venta
+P1.4: Actualización de registros
+
+ALMACENES DE DATOS:
+D1: Tanques
+D2: Registro de Ventas
+
+FLUJOS DE DATOS:
+E1 → P1.1: Datos de compra (tipo y cantidad o monto)
+P1.1 → P1.2: Solicitud validada
+P1.2 → D1: Consulta niveles
+D1 → P1.2: Estado de gasolina
+P1.2 → P1.3: Disponibilidad confirmada
+P1.3 → D1: Descuento en tanque
+P1.3 → D2: Valor recaudado
+P1.3 → P1.4: Datos de transacción
+P1.4 → D1, D2: Registros actualizados
+P1.3 → E1: Resultado de compra
+P1.2 → E1: Mensaje de error (si no hay gasolina)
